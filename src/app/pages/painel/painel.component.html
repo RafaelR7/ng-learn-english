@@ -1,0 +1,63 @@
+<div class="card m-3">
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-4">
+      <progressbar [max]="tempoParaResposta" [value]="timer" type="primary" [striped]="true" [animate]="true">
+        <i>{{timer}}</i>
+      </progressbar>
+    </div>
+    <div class="col-sm-12 col-md-5"></div>
+    <div class="col-sm-12 col-md-3">
+      <app-tentativas></app-tentativas>
+    </div>
+  </div>
+  <br>
+
+  <div class="row m-2">
+    <div class="col-12">
+      Traduza esta frase:
+    </div>
+  </div>
+
+  <div class="row m-2">
+    <div class="col-12">
+      {{perguntas[numero].pergunta}}
+    </div>
+  </div>
+
+  <form (ngSubmit)="checkResposta(f)" #f="ngForm">
+    <div class="row m-2">
+      <div class="col-12">
+        <textarea rows="2" class="form-control" name="resposta" ngModel required></textarea>
+      </div>
+    </div>
+    <div class="row m-2">
+      <div class="col-12">
+        <button
+        type="submit"
+        class="btn btn-primary
+        float-right"
+        [disabled]="!f.valid"
+        (click)="openPopUp()">
+        Verificar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<popup #popup>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h4><i class="fas fa-check"></i> Acertos: {{acertos}}</h4>
+    </div>
+    <div class="col-12 text-center">
+      <h4><i class="fas fa-times"></i> Erros: {{erros}}</h4>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 text-center">
+      <button class="btn btn-lg btn-primary" (click)="closePopup()">Recomeçar</button>
+    </div>
+  </div>
+</popup>
+

@@ -1,0 +1,11 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-times {
+  color: red;
+}
